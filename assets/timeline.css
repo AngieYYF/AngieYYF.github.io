@@ -1,0 +1,195 @@
+/* ========================================= */
+/* ## Vertical Degree Timeline */
+/* ========================================= */
+
+.timeline {
+    position: relative;
+    list-style: none;
+    padding: 0 0 0 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 15px;
+    width: 4px;
+    background-color: #88c2ff;
+    border-radius: 2px;
+}
+
+timeline-item > .timeline-item { 
+    margin-bottom: 50px;
+    position: relative;
+    padding-left: 30px;
+    padding-bottom: 0px; 
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -13px;
+    top: 10px;
+    width: 14px;
+    height: 14px;
+    background-color: #456282;
+    border: 3px solid #fff;
+    border-radius: 50%;
+    z-index: 10;
+}
+
+.timeline-date {
+    font-weight: bold;
+    color: #456282;
+    margin-bottom: 5px;
+}
+
+/* --- Collapsible Styling and Toggle Button --- */
+
+.timeline-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-right: 40px;
+    cursor: pointer; 
+    transition: background-color 0.2s ease;
+    padding-left: 10px;
+    padding-top: 10px
+}
+
+.timeline-header:hover {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+}
+
+.collapse-indicator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: 1px solid #456282;
+    color: #456282;
+    font-size: 1.5em;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin-left: 20px;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+    user-select: none; 
+}
+
+/* --- Collapsible Logic (Hiding/Showing) --- */
+
+.timeline-details {
+    /* Hiding state: max-height is 0 */
+    max-height: 0; 
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.4s ease-out;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 10px; /* Indent the details slightly */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+}
+
+.timeline-details.active {
+    max-height: 1000px; 
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+
+
+
+/* ========================================= */
+/* ## Scrollable Horizontal Subject Timeline */
+/* ========================================= */
+.subject-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    font-size: 0.85rem;
+}
+
+.subject-list li {
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+/* --- Timeline Container and Scrolling --- */
+.h-timeline-scroll-container {
+    overflow-x: auto; 
+    overflow-y: hidden;
+    padding-bottom: 20px; 
+    width: 100%;
+}
+
+.h-timeline-wrapper {
+    display: flex;
+    border-bottom: 4px solid #3498db; 
+    padding: 0 50px 0 50px;
+    width: max-content; 
+    min-width: 85%; 
+    padding-top: 20px;
+    position: relative;
+}
+
+/* --- Individual Timeline Item Box (Semester) --- */
+.h-timeline-item-box {
+    min-width: 1px; 
+    padding: 0; 
+    position: relative;
+    text-align: center;
+}
+
+/* --- The Dot on the Timeline Line --- */
+.h-timeline-dot {
+    width: 16px;
+    height: 16px;
+    background-color: #e74c3c; 
+    border: 3px solid #fff; 
+    border-radius: 50%;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+}
+
+/* --- Content Box Below the Timeline --- */
+.h-timeline-item-content {
+    position: absolute;
+    top: 100%; 
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    z-index: 5;
+}
+
+/* --- Line/Branch from Dot to Content Box --- */
+.h-timeline-item-box::before {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 15px; 
+    background-color: #3498db; 
+    z-index: 9; 
+}
+
+.h-timeline-heading {
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+    text-align: center;
+}

@@ -1,0 +1,35 @@
+/* Navigation Bar */
+.navbar {
+    overflow: hidden;
+    background-color: #88c2ff; 
+    position: fixed; 
+    top: 0;
+    width: 100%;
+    padding: 10px 0; 
+    text-align: center;
+    box-shadow: 0 4px 6px -6px #333;
+}
+
+.navbar a {
+    display: inline-block; 
+    color: white; 
+    text-align: center;
+    padding: 5px 40px; 
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    line-height: normal;
+    font-size: 20px;
+}
+
+/* Hover Effect */
+.navbar a:hover {
+    text-decoration: underline;
+    color: #456282; 
+}
+
+/* Active Page Effect */
+.navbar a.active {
+    background-color: #4563828a;
+    color: white;
+    border-radius: 5px;
+}
