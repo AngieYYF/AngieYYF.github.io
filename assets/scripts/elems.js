@@ -23,6 +23,34 @@ class NavigationBar extends HTMLElement {
 customElements.define('navigation-bar', NavigationBar);
 
 
+class FooterBar extends HTMLElement {
+    constructor() {
+        super();
+        
+        const githubUrl = "https://github.com/AngieYYF";
+        const linkedinUrl = "https://www.linkedin.com/in/angela-yuan-3294b6237/";
+        const emailAddress = "angelay789.aa@gmail.com";
+        const copyrightYear = new Date().getFullYear();
+
+        this.innerHTML = `
+            <footer class="site-footer">
+                <div class="footer-content-wrapper"> 
+                    
+                    <p class="copyright">&copy; ${copyrightYear} Angela Yuan</p>
+                    
+                    <div class="footer-links">
+                        <a href="${githubUrl}" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <span class="separator">|</span>
+                        <a href="${linkedinUrl}" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <span class="separator">|</span>
+                        <a href="mailto:${emailAddress}">Email</a>
+                    </div>
+                </div>
+            </footer>
+        `;
+    }
+}
+customElements.define('footer-bar', FooterBar);
 
 class TimelineItem extends HTMLElement {
     constructor() {
