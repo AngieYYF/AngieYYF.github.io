@@ -3,6 +3,7 @@
     overflow: hidden;
     background-color: #88c2ff; 
     position: fixed; 
+    z-index: 1000;
     top: 0;
     width: 100%;
     padding: 10px 0; 
