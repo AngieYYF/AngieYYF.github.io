@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/navigation.css">
     <link rel="stylesheet" href="assets/footer.css">
     <link rel="stylesheet" href="assets/main.css">
+    <link rel="stylesheet" href="assets/academics.css">
     <script src="assets/scripts/elems.js" type="module"></script>
     
     
@@ -17,9 +18,113 @@
 
     <div class="content">
         <h1>Academic Work</h1>
-        <p>
-            
-        </p>
+        <details class="academic-section" open>
+            <summary class="section-header">
+                <h2>Research & Publications</h2>
+            </summary>
+            <div class="section-content">
+                <div class="research-items-container">  
+                    <research-item
+                        data-title="EMMM, Explain Me My Model! Explainable Machine Generated Text Detection in Dialogues"
+                        data-authors="Angela Yifei Yuan, Haoyi Li, Caren Soyeon Han, Christopher Leckie"
+                        data-venue="arXiv, 2025"
+                        data-pdf-url="https://arxiv.org/abs/2508.18715"
+                        data-code-url="https://github.com/AngieYYF/EMMM-explainable-chatbot-detection"
+                        data-abstract="The rapid adoption of large language models (LLMs) in customer service introduces new risks, as malicious actors can exploit them to conduct large-scale user impersonation through machine-generated text (MGT). Current MGT detection methods often struggle in online conversational settings, reducing the reliability and interpretability essential for trustworthy AI deployment. In customer service scenarios where operators are typically non-expert users, explanation become crucial for trustworthy MGT detection. In this paper, we propose EMMM, an explanation-then-detection framework that balances latency, accuracy, and non-expert-oriented interpretability. Experimental results demonstrate that EMMM provides explanations accessible to non-expert users, with 70% of human evaluators preferring its outputs, while achieving competitive accuracy compared to state-of-the-art models and maintaining low latency, generating outputs within 1 second.">
+                    </research-item>
+
+                    <research-item
+                        data-title="SPADE: Structured Prompting Augmentation for Dialogue Enhancement in Machine-Generated Text Detection"
+                        data-authors="Haoyi Li, Angela Yifei Yuan, Caren Soyeon Han, Christopher Leckie"
+                        data-venue="LLMSEC, 2025"
+                        data-pdf-url="https://aclanthology.org/2025.llmsec-1.11/"
+                        data-code-url="https://github.com/AngieYYF/SPADE-customer-service-dialogue"
+                        data-abstract="The increasing capability of large language models (LLMs) to generate synthetic content has heightened concerns about their misuse, driving the development of Machine-Generated Text (MGT) detection models. However, these detectors face significant challenges due to the lack of high-quality synthetic datasets for training. To address this issue, we propose SPADE, a structured framework for detecting synthetic dialogues using prompt-based positive and negative samples. Our proposed methods yield 14 new dialogue datasets, which we benchmark against eight MGT detection models. The results demonstrate improved generalization performance when utilizing a mixed dataset produced by proposed augmentation frameworks, offering a practical approach to enhancing LLM application security. Considering that real-world agents lack knowledge of future opponent utterances, we simulate online dialogue detection and examine the relationship between chat history length and detection accuracy.">
+                    </research-item>
+                </div>
+            </div>
+        </details>
+
+        <details class="academic-section">
+            <summary class="section-header">
+                <h2>Teaching</h2>
+            </summary>
+            <div class="section-content">
+                <div class="teaching-items-container">
+                    
+                    <teaching-item
+                        data-role="Tutor"
+                        data-code="INFO20003"
+                        data-name="Database Systems"
+                        data-link="https://handbook.unimelb.edu.au/2026/subjects/info20003"
+                        data-university="University of Melbourne">
+                        
+                        <ul>
+                            <li>Led advanced tutorial sessions focusing on transformer models and prompt engineering.</li>
+                            <li>Assisted with assignment marking and project supervision for 40 Master's students.</li>
+                        </ul>
+                    </teaching-item>
+
+                    <teaching-item
+                        data-role="Tutor"
+                        data-code="COMP30026"
+                        data-name="Models of Computation"
+                        data-link="https://handbook.unimelb.edu.au/2026/subjects/comp30026"
+                        data-university="University of Melbourne">
+                        
+                        <p>Delivered weekly lab sessions focused on C programming fundamentals and introductory data structures.</p>
+                    </teaching-item>
+                    
+                </div>
+            </div>
+        </details>
+
+        <details class="academic-section">
+            <summary class="section-header">
+                <h2>Scholarships & Awards</h2>
+            </summary>
+            <div class="section-content">
+                <div class="award-items-container">
+
+                    <award-item
+                        data-name="Dean's Honours List - Faculty of Engineering and IT"
+                        data-year="2024"
+                        data-source="University of Melbourne">
+                    </award-item>
+
+                    <award-item
+                        data-name="Boeing Awards for Excellence in Computer Science"
+                        data-year="2023"
+                        data-source="Boeing, University of Melbourne">
+                    </award-item>
+
+                    <award-item
+                        data-name="Undergraduate Excellence in Computing and Information Systems Scholarship"
+                        data-year="2023"
+                        data-source="University of Melbourne">
+                    </award-item>
+
+                    <award-item
+                        data-name="Dean's Honours List - Bachelor of Science - Third Year"
+                        data-year="2023"
+                        data-source="University of Melbourne">
+                    </award-item>
+
+                    <award-item
+                        data-name="Dean's Honours List - Bachelor of Science - Second Year"
+                        data-year="2022"
+                        data-source="University of Melbourne">
+                    </award-item>
+                    
+                    <award-item
+                        data-name="Dean's Honours List - Bachelor of Science - First Year"
+                        data-year="2021"
+                        data-source="University of Melbourne">
+                    </award-item>
+                    
+                </div>
+            </div>
+        </details>
     </div>
 
     <footer-bar></footer-bar>

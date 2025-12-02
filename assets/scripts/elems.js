@@ -52,11 +52,123 @@ class FooterBar extends HTMLElement {
 }
 customElements.define('footer-bar', FooterBar);
 
+
+class ResearchItem extends HTMLElement {
+    constructor() {
+        super();
+        
+        // Get data from attributes
+        const title = this.getAttribute('data-title') || 'Project Title Missing';
+        const authors = this.getAttribute('data-authors') || 'Author(s) Missing';
+        const venue = this.getAttribute('data-venue') || 'Venue Missing';
+        const pdfUrl = this.getAttribute('data-pdf-url');
+        const codeUrl = this.getAttribute('data-code-url');
+        const abstract = this.getAttribute('data-abstract');
+
+        // Build the HTML structure
+        let buttonsHtml = '';
+        if (pdfUrl) {
+            buttonsHtml += `
+                <a href="${pdfUrl}" class="btn btn-pdf" target="_blank" rel="noopener noreferrer">
+                    <span class="emoji">📄</span> PDF
+                </a>
+            `;
+        }
+        if (codeUrl) {
+            buttonsHtml += `
+                <a href="${codeUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer">
+                    <span class="emoji">💻</span> Code
+                </a>
+            `;
+        }
+
+        this.className = 'research-item';
+        this.innerHTML = `
+            <div class="item-header">
+                <h3 class="item-title">${title}</h3>
+                <p class="item-venue">${venue}</p>
+            </div>
+            
+            <p class="item-authors">
+                <strong>Authors</strong>: ${authors}
+            </p>
+
+            <p class="item-abstract">
+                <strong>Abstract</strong>: 
+                ${abstract}
+            </p>
+            
+            <div class="item-buttons">
+                ${buttonsHtml}
+            </div>
+        `;
+    }
+}
+customElements.define('research-item', ResearchItem);
+
+
+class TeachingItem extends HTMLElement {
+    constructor() {
+        super();
+        
+        // Get data from attributes
+        const subjectCode = this.getAttribute('data-code') || 'CODE';
+        const subjectName = this.getAttribute('data-name') || 'Subject Name Missing';
+        const subjectLink = this.getAttribute('data-link') || '#';
+        const university = this.getAttribute('data-university') || 'University Missing';
+        const role = this.getAttribute('data-role') || 'Role Missing';
+
+        // Build the HTML structure
+        this.className = 'teaching-item';
+        this.innerHTML = `
+            <div class="teaching-details">
+                <span class="teaching-role">${role}</span>
+                <span class="teaching-separator">|</span>
+                <span class="teaching-name"><b><em>${subjectName}</em></b></span>
+                <a href="${subjectLink}" class="teaching-code" target="_blank" rel="noopener noreferrer">
+                    (${subjectCode})
+                </a>
+                <span class="teaching-university">@ ${university}</span>
+            </div>
+            
+            <slot></slot>
+        `;
+    }
+}
+customElements.define('teaching-item', TeachingItem);
+
+class AwardItem extends HTMLElement {
+    constructor() {
+        super();
+        
+        // Get data from attributes
+        const awardName = this.getAttribute('data-name') || 'Award Name Missing';
+        const year = this.getAttribute('data-year') || 'Year Missing';
+        const source = this.getAttribute('data-source') || 'Source Missing';
+
+        // Build the HTML structure
+        this.className = 'award-item';
+        this.innerHTML = `
+            <div class="award-details">
+                <span class="award-name">${awardName}</span>
+                <span class="award-separator">|</span>
+                <span class="award-year">${year}</span>
+                <span class="award-separator">|</span>
+                <span class="award-source">${source}</span>
+            </div>
+            
+            <slot></slot>
+        `;
+    }
+}
+customElements.define('award-item', AwardItem);
+
+
 class TimelineItem extends HTMLElement {
     constructor() {
         super();
         
-        // 1. Get data from attributes
+        // Get data from attributes
         const date = this.getAttribute('data-date');
         const degree = this.getAttribute('data-degree');
         const university = this.getAttribute('data-university');
@@ -65,10 +177,10 @@ class TimelineItem extends HTMLElement {
             ? `<p>WAM: ${wam}</p>` 
             : '';
 
-        // 2. Capture the inner HTML (the hidden details)
+        // Capture the inner HTML (the hidden details)
         const slotElement = this.innerHTML; 
         
-        // 3. Define the full, structured HTML for the list item
+        // Define the full, structured HTML for the list item
         this.innerHTML = `
             <li class="timeline-item">
                 <div class="timeline-dot"></div>
@@ -89,10 +201,10 @@ class TimelineItem extends HTMLElement {
             </li>
         `;
         
-        // 4. Attach the event listener to the HEADER (the clickable area)
-        const header = this.querySelector('.timeline-header'); // TARGET THE HEADER
+        // Attach the event listener to the HEADER (the clickable area)
+        const header = this.querySelector('.timeline-header');
         const detailsContainer = this.querySelector('.timeline-details');
-        const indicator = this.querySelector('.collapse-indicator'); // Get the indicator span
+        const indicator = this.querySelector('.collapse-indicator');
 
         if (header && detailsContainer) {
             // Function to handle the click/keypress
@@ -101,7 +213,7 @@ class TimelineItem extends HTMLElement {
                 
                 // Update indicator text and ARIA attribute
                 indicator.textContent = isExpanded ? '-' : '+';
-                header.setAttribute('aria-expanded', isExpanded); // Update ARIA on the header
+                header.setAttribute('aria-expanded', isExpanded);
             };
 
             // Attach event listener for mouse clicks
@@ -118,7 +230,6 @@ class TimelineItem extends HTMLElement {
     }
 }
 customElements.define('timeline-item', TimelineItem);
-
 
 
 // Function to dynamically calculate and set the required bottom padding
@@ -159,18 +270,18 @@ function setDynamicHorizontalPadding() {
 
         let maxWidth = 0;
 
-        // 1. Find the width of the widest subject box within THIS specific container
+        // Find the width of the widest subject box within THIS specific container
         contentBoxes.forEach(box => {
             if (box.offsetWidth > maxWidth) {
                 maxWidth = box.offsetWidth;
             }
         });
 
-        // 2. Calculate the required horizontal padding
+        // Calculate the required horizontal padding
         const bufferMargin = 20; 
         const requiredPadding = Math.ceil(maxWidth / 2) + bufferMargin;
 
-        // 3. Apply the calculated padding to every timeline item box within THIS specific container
+        // Apply the calculated padding to every timeline item box within THIS specific container
         itemBoxes.forEach(itemBox => {
             itemBox.style.paddingLeft = `${requiredPadding}px`;
             itemBox.style.paddingRight = `${requiredPadding}px`;

@@ -1,0 +1,245 @@
+/* ========================================= */
+/* ## Academic Work */
+/* ========================================= */
+
+.academic-section {
+    border: px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.section-header {
+    display: block;
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: #f7f7f7; 
+    border-radius: 8px;
+    transition: background-color 0.3s;
+    list-style: none; 
+    position: relative;
+}
+
+.section-header::after {
+    content: '▶';
+    font-size: 0.8em;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s;
+}
+
+.academic-section[open] .section-header::after {
+    content: '▼'; 
+}
+
+.section-header h2 {
+    margin: 0; 
+    font-size: 1.25em; 
+    color: #333;
+    display: inline-block;
+}
+
+/* Style the content area */
+.section-content {
+    padding: 20px;
+    border-top: 1px solid #eee; 
+    border-radius: 0 0 8px 8px;
+}
+
+
+/* ========================================= */
+/* ## Research & Publications */
+/* ========================================= */
+
+/* Styling for individual research items */
+.research-item {
+    display: block;
+    border-radius: 6px;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.637);
+
+}
+
+.research-item:last-child {
+    margin-bottom: 0;
+}
+
+.item-header {
+    margin-bottom: 10px;
+}
+
+.item-title {
+    font-size: 1.3em;
+    color: #0056b3; 
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.item-venue {
+    font-style: italic;
+    color: #666;
+    font-size: 0.9em;
+}
+
+.item-authors {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 0.95em;
+}
+
+.item-abstract {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 0.95em;
+}
+
+.item-buttons {
+    margin-top: 20px;
+}
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-weight: bold;
+    transition: background-color 0.3s, opacity 0.3s;
+    margin-right: 10px;
+    border: 1px solid transparent;
+}
+
+
+.btn-pdf {
+    background-color: #456482; 
+    color: white;
+}
+
+.btn-code {
+    background-color: #456482;
+    color: white;
+}
+
+.btn:hover {
+    opacity: 0.85;
+}
+
+.btn .emoji {
+    margin-right: 5px;
+}
+
+
+/* ========================================= */
+/* ## Teaching Experience */
+/* ========================================= */
+
+.teaching-item {
+    display: block; 
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee;
+}
+
+.teaching-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.teaching-details {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #444;
+}
+
+.teaching-role {
+    font-style: italic;
+    color: #777;
+}
+
+.teaching-separator {
+    color: #ccc;
+    margin: 0 10px;
+}
+
+.teaching-code {
+    font-weight: bold;
+    text-decoration: none;
+    color: #0056b3;
+    transition: color 0.2s;
+}
+
+.teaching-code:hover {
+    text-decoration: underline;
+    color: #007bff;
+}
+
+.teaching-university {
+    color: #888;
+    font-size: 0.9em;
+    margin-left: 5px;
+}
+
+.teaching-item ul,
+.teaching-item p {
+    margin-top: 8px;
+    margin-left: 20px;
+    font-size: 0.95em;
+    color: #555;
+}
+
+
+/* ========================================= */
+/* ## Scholarships & Awards */
+/* ========================================= */
+
+.award-item {
+    display: block; 
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px dashed #eee; 
+}
+
+.award-item:last-child {
+    margin-bottom: 0;
+    border-bottom: none;
+}
+
+.award-details {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #333;
+}
+
+.award-name {
+    font-weight: bold;
+    color: #0056b3; 
+    margin-right: 5px;
+}
+
+.award-year {
+    color: #555;
+    font-style: italic;
+}
+
+.award-source {
+    color: #777;
+    font-size: 0.95em;
+}
+
+.award-separator {
+    color: #ccc;
+    margin: 0 8px;
+    font-weight: normal;
+}
+
+.award-item p,
+.award-item ul {
+    margin-top: 8px;
+    margin-left: 20px;
+    font-size: 0.95em;
+    color: #555;
+}
