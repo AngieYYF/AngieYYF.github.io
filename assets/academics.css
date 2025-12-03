@@ -85,6 +85,7 @@
     gap: 15px;
     padding: 10px;
     margin: -10px;
+    flex-wrap: wrap;
 }
 
 .summary-details {
@@ -98,7 +99,6 @@
     margin: 0;
     font-size: 1.1em;
     color: #0056b3;
-    flex-shrink: 0;
 }
 
 .item-venue-summary {
@@ -170,17 +170,17 @@
 
 
 .btn-pdf {
-    background-color: #456482; 
+    background-color: #456482bf; 
     color: white;
 }
 
 .btn-code {
-    background-color: #456482;
+    background-color: #456482bf;
     color: white;
 }
 
 .btn-repo {
-    background-color: #456482;
+    background-color: #456482bf;
     color: white;
 }
 
