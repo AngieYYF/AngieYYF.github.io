@@ -65,46 +65,56 @@ class ResearchItem extends HTMLElement {
         const codeUrl = this.getAttribute('data-code-url');
         const abstract = this.getAttribute('data-abstract');
 
-        // Build the HTML structure
+        // Build Buttons HTML
         let buttonsHtml = '';
         if (pdfUrl) {
-            buttonsHtml += `
-                <a href="${pdfUrl}" class="btn btn-pdf" target="_blank" rel="noopener noreferrer">
-                    <span class="emoji">📄</span> PDF
-                </a>
-            `;
+            buttonsHtml += `<a href="${pdfUrl}" class="btn btn-pdf" target="_blank" rel="noopener noreferrer"><span class="emoji">📄</span> PDF</a>`;
         }
         if (codeUrl) {
-            buttonsHtml += `
-                <a href="${codeUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer">
-                    <span class="emoji">💻</span> Code
-                </a>
-            `;
+            buttonsHtml += `<a href="${codeUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer"><span class="emoji">💻</span> Code</a>`;
         }
-
-        this.className = 'research-item';
+        
+        this.className = 'research-item collapsed';
         this.innerHTML = `
-            <div class="item-header">
-                <h3 class="item-title">${title}</h3>
-                <p class="item-venue">${venue}</p>
+            <div class="item-summary click-target">
+                <div class="summary-details">
+                    <h3 class="item-title">${title}</h3>
+                    <span class="item-venue-summary">${venue}</span>
+                </div>
+                <div class="item-buttons">
+                    ${buttonsHtml} 
+                </div>
             </div>
             
-            <p class="item-authors">
-                <strong>Authors</strong>: ${authors}
-            </p>
-
-            <p class="item-abstract">
-                <strong>Abstract</strong>: 
-                ${abstract}
-            </p>
-            
-            <div class="item-buttons">
-                ${buttonsHtml}
+            <div class="item-details">
+                <p class="item-authors">
+                    <strong>Authors</strong>: ${authors}
+                </p>
+                <p class="item-abstract">
+                    <strong>Abstract</strong>: 
+                    ${abstract || 'Abstract content is missing.'}
+                </p>
+                <div class="item-buttons"> 
+                    ${buttonsHtml} 
+                </div>
             </div>
         `;
+        
+        const clickTargets = this.querySelectorAll('.click-target');
+        clickTargets.forEach(target => {
+            target.addEventListener('click', this.toggleExpand.bind(this));
+        });
+    }
+    
+    toggleExpand(event) {
+        if (event.target.closest('.item-buttons a')) {
+            return;
+        }
+        this.classList.toggle('collapsed');
     }
 }
 customElements.define('research-item', ResearchItem);
+
 
 class DatasetItem extends HTMLElement {
     constructor() {
@@ -116,36 +126,76 @@ class DatasetItem extends HTMLElement {
         const repoUrl = this.getAttribute('data-repo-url');
         const description = this.getAttribute('data-description');
 
-        // Build the HTML structure
-        this.className = 'research-item dataset-item-style';
-        
+        // Build Buttons HTML
         let buttonsHtml = '';
         if (repoUrl) {
-            buttonsHtml += `
-                <a href="${repoUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer">
-                    <span class="emoji">🗂️</span> Repository
-                </a>
-            `;
+            buttonsHtml += `<a href="${repoUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer"><span class="emoji">🗂️</span> Dataset</a>`;
         }
-
+        
+        this.className = 'research-item dataset-item-style collapsed';
         this.innerHTML = `
-            <div class="item-header">
-                <h3 class="item-title">${name}</h3>
-                <p class="item-venue">${source}</p>
+            <div class="item-summary click-target">
+                <div class="summary-details">
+                    <h3 class="item-title">${name}</h3>
+                    <span class="item-venue-summary">${source}</span>
+                </div>
+                <div class="item-buttons">
+                    ${buttonsHtml} 
+                </div>
             </div>
             
-            <p class="item-abstract">
-                <strong>Description</strong>: 
-                ${description || 'Brief description content is missing.'}
-            </p>
-
-            <div class="item-buttons">
-                ${buttonsHtml}
+            <div class="item-details">
+                <p class="item-abstract">
+                    ${description || 'Brief description content is missing.'}
+                </p>
+                <div class="item-buttons">
+                    ${buttonsHtml}
+                </div>
             </div>
         `;
+        
+        const clickTargets = this.querySelectorAll('.click-target');
+        clickTargets.forEach(target => {
+            target.addEventListener('click', this.toggleExpand.bind(this));
+        });
+    }
+    
+    toggleExpand(event) {
+        if (event.target.closest('.item-buttons a')) {
+            return;
+        }
+        this.classList.toggle('collapsed');
     }
 }
 customElements.define('dataset-item', DatasetItem);
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const expandButton = document.getElementById('expand-all-research');
+    const collapseButton = document.getElementById('collapse-all-research');
+    const researchItemsContainer = document.querySelector('.research-items-container');
+
+    if (expandButton && collapseButton && researchItemsContainer) {
+        
+        const items = researchItemsContainer.querySelectorAll('research-item, dataset-item');
+        if (items.length === 0) return;
+
+        // Function to expand all items
+        expandButton.addEventListener('click', function() {
+            items.forEach(item => {
+                item.classList.remove('collapsed');
+            });
+        });
+
+        // Function to collapse all items
+        collapseButton.addEventListener('click', function() {
+            items.forEach(item => {
+                item.classList.add('collapsed');
+            });
+        });
+    }
+});
+
 
 class TeachingItem extends HTMLElement {
     constructor() {
@@ -176,6 +226,7 @@ class TeachingItem extends HTMLElement {
     }
 }
 customElements.define('teaching-item', TeachingItem);
+
 
 class AwardItem extends HTMLElement {
     constructor() {

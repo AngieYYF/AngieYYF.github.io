@@ -20,9 +20,20 @@
         <h1>Academic Work</h1>
         <details class="academic-section" open>
             <summary class="section-header">
-                <h2>Research & Publications</h2>
+                <h2>Research, Publications & Datasets</h2>
             </summary>
             <div class="section-content">
+
+                <div class="research-controls"> 
+                    <div class="toggle-all-container">
+                        <button id="expand-all-research" class="btn btn-toggle btn-expand">Expand All</button>
+                        <button id="collapse-all-research" class="btn btn-toggle btn-collapse">Collapse All</button>
+                    </div>
+                    <p class="section-instruction">
+                        Or click on title area of each item to collapse/expand for more details.
+                    </p>
+                </div>
+
                 <div class="research-items-container">  
                     <research-item
                         data-title="EMMM, Explain Me My Model! Explainable Machine Generated Text Detection in Dialogues"
@@ -48,7 +59,7 @@
                         data-repo-url="https://huggingface.co/collections/AngieYYF/ai-chatbot-in-dialogues"
                         data-description="Datasets to support detection of AI chatbot in online conversational settings.">
                     </dataset-item>
-                    
+
                 </div>
             </div>
         </details>
