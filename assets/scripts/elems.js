@@ -106,6 +106,46 @@ class ResearchItem extends HTMLElement {
 }
 customElements.define('research-item', ResearchItem);
 
+class DatasetItem extends HTMLElement {
+    constructor() {
+        super();
+        
+        // Get data from attributes
+        const name = this.getAttribute('data-name') || 'Dataset Name Missing';
+        const source = this.getAttribute('data-source') || 'Source Missing';
+        const repoUrl = this.getAttribute('data-repo-url');
+        const description = this.getAttribute('data-description');
+
+        // Build the HTML structure
+        this.className = 'research-item dataset-item-style';
+        
+        let buttonsHtml = '';
+        if (repoUrl) {
+            buttonsHtml += `
+                <a href="${repoUrl}" class="btn btn-code" target="_blank" rel="noopener noreferrer">
+                    <span class="emoji">🗂️</span> Repository
+                </a>
+            `;
+        }
+
+        this.innerHTML = `
+            <div class="item-header">
+                <h3 class="item-title">${name}</h3>
+                <p class="item-venue">${source}</p>
+            </div>
+            
+            <p class="item-abstract">
+                <strong>Description</strong>: 
+                ${description || 'Brief description content is missing.'}
+            </p>
+
+            <div class="item-buttons">
+                ${buttonsHtml}
+            </div>
+        `;
+    }
+}
+customElements.define('dataset-item', DatasetItem);
 
 class TeachingItem extends HTMLElement {
     constructor() {

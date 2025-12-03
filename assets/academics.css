@@ -64,6 +64,10 @@
 
 }
 
+.dataset-item-style {
+    background-color: rgba(255, 254, 243, 0.637); 
+}
+/* rgba(252, 251, 237, 0.637);  */
 .research-item:last-child {
     margin-bottom: 0;
 }
@@ -120,6 +124,11 @@
 }
 
 .btn-code {
+    background-color: #456482;
+    color: white;
+}
+
+.btn-repo {
     background-color: #456482;
     color: white;
 }
